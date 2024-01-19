@@ -53,6 +53,9 @@ The neural network consists of three types of classes: InputLayer, HiddenLayer, 
 The sigmoid activation function is used throughout the network. We define 2 functions:
 * **sigm** - sigmoid function used in forward propagation of inputs
 * **sigm_delta** - the derivative of simgoid function nueeded for back propagation
+* **soft_max** - softmax function used as activation function for output layer in multiclass classification
+* **oneHotEncoder** - function to encode network outputs with only 0.0 and 1.0
+* **find_wrong_labels** - function to identify missclassified patterns
 </br>
 
 ## Layer Classes
@@ -61,7 +64,7 @@ The sigmoid activation function is used throughout the network. We define 2 func
 The InputLayer class represents the initial layer of the neural network, corresponding to the input features.
 * **Attributes**:
   * **outputs** - matrix of output weights
-  * **neurons_num** - number of neurons equal to the size of input data   
+  * **neurons_num** - number of neurons equal to the size of input data
 ### HiddenLayer(Layer)
 The HiddenLayer class represents the hidden layers of the neural network. 
 * **Attributes**:
@@ -84,6 +87,7 @@ The NeuralNetwork class represents the entire artificial neural network.
   * **d** - real output for current input pattern
   * **layers_num** - # of layers
   * **neurons_per_layer** - list of # of neurons per layer
+  * **dataset** - type of problem ['xor', 'digits']
 * **Methods**:
   * **init**(self, inputs, real_outputs, layers_num, neurons_per_layer=[])- initializes the neural network with input patterns, real outputs, and desired architecture
   * **add**(self, layer: Layer) -  adds a layer to the neural network
